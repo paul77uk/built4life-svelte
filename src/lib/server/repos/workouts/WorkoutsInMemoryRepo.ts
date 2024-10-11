@@ -379,6 +379,13 @@ class WorkoutsInMemoryRepo implements WorkoutsRepo {
 		// if (Math.random() > 0.5) throw new Error('Method not implemented.')
 		return this.#workouts
 	}
+
+	search = async (query?: string) =>
+		query
+			? this.#workouts.filter(({ title }) =>
+					title.toLowerCase().includes(query.toLowerCase()),
+				)
+			: this.#workouts
 }
 
 export const workoutsRepo = new WorkoutsInMemoryRepo()

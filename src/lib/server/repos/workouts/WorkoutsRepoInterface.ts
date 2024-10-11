@@ -9,4 +9,5 @@ export type Workout = {
 
 export interface WorkoutsRepo {
 	getAll(): Promise<Workout[]>
+	search(query?: string | null): Promise<Workout[]>
 }

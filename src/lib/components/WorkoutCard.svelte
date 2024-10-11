@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card'
-	import type { Workout } from '$lib/repos/workouts/WorkoutsRepoInterface'
+	import type { Workout } from '$lib/server/repos/workouts/WorkoutsRepoInterface'
+
 	import Button from './ui/button/button.svelte'
 
 	let { title, description, exercises = $bindable() }: Workout = $props()
@@ -22,6 +23,6 @@
 	</Card.Content>
 	<!-- could use flex-1 or grow -->
 	<Card.Footer class="grow">
-		<Button class="w-full">Start Workout</Button>
+		<Button class="w-full">Add to My Workouts</Button>
 	</Card.Footer>
 </Card.Root>

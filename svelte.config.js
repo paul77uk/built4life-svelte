@@ -5,9 +5,6 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// compilerOptions: {
-	// 	runes: true,
-	// },
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
@@ -20,6 +17,9 @@ const config = {
 		// because changed adapter to vercel, we can run the app on the edge
 		adapter: adapter({ runtime: 'edge' }),
 	},
+	// compilerOptions: {
+	// 	runes: true,
+	// },
 }
 
 export default config
