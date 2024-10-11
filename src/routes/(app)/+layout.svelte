@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Header from '$lib/components/Header.svelte'
 	import SubHeader from '$lib/components/SubHeader.svelte'
-
+	import { isAuthenticated } from '../isAuthenticated.svelte'
 	// $props() is a function that returns the props passed to the component
 	// in this case, it returns an object with a key children
 	// we destructure the children key from the object
@@ -14,7 +14,10 @@
 	// children is a function that returns the children of the component
 	// it is a built-in Svelte function that is used to render the children of a component
 
-	let { children } = $props()
+	let { children, data } = $props()
+
+	let isLoggedin = isAuthenticated()
+	isLoggedin.authState = data.isAuthenticated
 </script>
 
 <Header />

@@ -42,6 +42,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/drizzle-adapter": "^1.7.0",
+		"@auth/sveltekit": "^1.7.0",
 		"@fontsource/rubik-doodle-shadow": "^5.1.0",
 		"@kinde-oss/kinde-auth-sveltekit": "^1.3.0",
 		"@lucia-auth/adapter-drizzle": "^1.1.0",

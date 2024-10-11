@@ -1,5 +1,5 @@
 <script>
-	import { page } from "$app/stores"
+	import { page } from '$app/stores'
 
 	const links = [
 		{
@@ -23,8 +23,6 @@
 			path: '/history',
 		},
 	]
-
-	
 </script>
 
 <nav class=" bg-[#333333]">
@@ -33,9 +31,9 @@
 	>
 		{#each links as { label, path }}
 			{#if $page.url.pathname === path}
-				<a href={path} class="p-3 text-white bg-[#DF0000] h-full">{label}</a>
+				<a href={path} class="h-full bg-[#DF0000] p-3 text-white">{label}</a>
 			{:else}
-				<a href={path} class="p-3 text-white hover:text-[#DF0000] ">
+				<a href={path} class="p-3 text-white hover:text-[#DF0000]">
 					{label}
 				</a>
 			{/if}

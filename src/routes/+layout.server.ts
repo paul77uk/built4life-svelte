@@ -11,6 +11,7 @@ export const load = async ({ request }: RequestEvent) => {
 	const isAuthenticated = await kindeAuthClient.isAuthenticated(
 		request as unknown as SessionManager,
 	) // Boolean: true or false
+
 	if (isAuthenticated) {
 		const user = await kindeAuthClient.getUser(
 			request as unknown as SessionManager,
@@ -33,8 +34,7 @@ export const load = async ({ request }: RequestEvent) => {
 		}
 
 		// redirect user to home page
-		return { isAuthenticated }
-	} else {
-		// Need to implement, e.g: redirect user to sign in, etc..
 	}
+console.log(isAuthenticated)
+	return { isAuthenticated }
 }

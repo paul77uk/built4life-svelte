@@ -4,6 +4,7 @@
 
 	let { data } = $props()
 	// let workouts: Workout[] = data.workouts
+	
 </script>
 
 <SearchForm />

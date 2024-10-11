@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores'
-	import Button from './ui/button/button.svelte'
 	import Input from './ui/input/input.svelte'
 	import Search from 'lucide-svelte/icons/search'
 
