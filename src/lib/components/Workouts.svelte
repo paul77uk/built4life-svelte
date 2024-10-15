@@ -11,8 +11,8 @@
 
 <div class="m-3">
 	<div class="flex flex-wrap justify-center">
-		{#each workouts as { title, description, exercises }}
-			<WorkoutCard {title} {description} {exercises} />
+		{#each workouts as { title, description, exercises, pr, minutes, seconds }}
+			<WorkoutCard {title} {description} {exercises} {pr} {minutes} {seconds} />
 		{/each}
 	</div>
 </div>

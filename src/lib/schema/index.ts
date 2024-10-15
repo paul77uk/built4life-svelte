@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, varchar } from 'drizzle-orm/pg-core'
+import { integer, pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
 
 export const userTable = pgTable('user', {
 	id: text('id').primaryKey(),
@@ -20,17 +20,20 @@ export const sessionTable = pgTable('session', {
 })
 
 export const workoutTable = pgTable('workout', {
-	id: text('id').primaryKey(),
+	id: uuid('id').primaryKey().notNull().defaultRandom(),
 	userId: text('user_id')
 		.notNull()
 		.references(() => userTable.id),
 	title: text('title').notNull(),
 	description: text('description'),
 	exercises: text('exercises').notNull().array(),
+	pr: integer('pr'),
+	minutes: integer('minutes'),
+	seconds: integer('seconds'),
 	createdAt: timestamp('created_at', {
 		withTimezone: true,
 		mode: 'date',
-	}).notNull(),
+	}).notNull().defaultNow(),
 })
 
 // npm run push

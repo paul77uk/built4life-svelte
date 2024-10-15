@@ -59,6 +59,8 @@
 		"svelte-radix": "^1.1.1",
 		"tailwind-merge": "^2.5.2",
 		"tailwind-variants": "^0.2.1",
+		"uuid": "^10.0.0",
+		"uuidv7": "^1.0.2",
 		"zod": "^3.23.8"
 	}
 }

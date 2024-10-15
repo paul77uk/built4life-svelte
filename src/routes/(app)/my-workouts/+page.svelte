@@ -1,22 +1,26 @@
 <script lang="ts">
-	import * as Dialog from '$lib/components/ui/dialog'
+	import MyWorkout from '$lib/components/MyWorkout.svelte'
+	import SearchForm from '$lib/components/SearchForm.svelte'
 
-	let openModal = $state(true)
+	let { data } = $props()
 </script>
 
-<Dialog.Root bind:open={openModal}>
-	<!-- <Dialog.Trigger>Open</Dialog.Trigger> -->
-	<Dialog.Content>
-		<Dialog.Header>
-			<Dialog.Title>Create new workout</Dialog.Title>
-			<form action="/?/createWorkout" enctype="multipart/form-data">
-        <div>
+<SearchForm />
 
-        </div>
-      </form>
-		</Dialog.Header>
-	</Dialog.Content>
-</Dialog.Root>
-
-<!-- TODO: maybe delete above, as don't think I need -->
-<!-- TODO: Dropdown maybe add, just before hour mark on vid tut -->
+{#if !data.filteredWorkouts}
+	<p>No Workouts</p>
+{:else}
+	<div class="m-3 flex flex-wrap justify-center">
+		{#each data.filteredWorkouts as { id, title, description, exercises, pr, minutes, seconds }}
+			<MyWorkout
+				{id}
+				{title}
+				{description}
+				{exercises}
+				{pr}
+				{minutes}
+				{seconds}
+			/>
+		{/each}
+	</div>
+{/if}

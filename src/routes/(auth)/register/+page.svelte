@@ -17,7 +17,7 @@
 
 	// enhance is a function that takes a form object and returns an enhanced form object
 	// enhanced form object has additional properties and methods
-	const { form: formData, enhance, delayed, errors } = form
+	const { form: formData, enhance, delayed } = form
 </script>
 
 <Card.Root class="mx-auto max-w-sm">

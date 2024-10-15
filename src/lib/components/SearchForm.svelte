@@ -7,7 +7,7 @@
 </script>
 
 <search>
-	<form class="relative mx-auto mt-2 flex w-fit" data-sveltekit-keepfocus>
+	<form class="relative mx-auto mt-6 flex w-fit" data-sveltekit-keepfocus>
 		<Search class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
 		<Input
 			class="pl-8"
