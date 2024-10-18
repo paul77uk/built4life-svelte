@@ -373,6 +373,38 @@ class WorkoutsInMemoryRepo implements WorkoutsRepo {
 			minutes: 5,
 			seconds: 0,
 		},
+		// index 46
+		{
+			title: 'AMRAP Bent Row 2',
+			description: 'AMRAP in 1 set',
+			exercises: ['Static Bent Row (100lb/ 45kg)'],
+			pr: 0,
+		},
+		// index 47
+		{
+			title: 'AMRAP Bent Row in 5 minutes 2',
+			description: 'AMRAP in 5 minutes',
+			exercises: ['Static Bent Row (100lb/ 45kg)'],
+			pr: 0,
+			minutes: 5,
+			seconds: 0,
+		},
+		// index 48
+		{
+			title: 'AMRAP Clean & Press 3',
+			description: 'AMRAP in 1 set',
+			exercises: ['Overhead Press (50lb/ 25kg)'],
+			pr: 0,
+		},
+		// index 49
+		{
+			title: 'AMRAP Clean & Press in 5 minutes 2',
+			description: 'AMRAP in 5 minutes',
+			exercises: ['Overhead Press (50lb/ 25kg)'],
+			pr: 0,
+			minutes: 5,
+			seconds: 0,
+		},
 	]
 
 	async getAll(): Promise<Workout[]> {

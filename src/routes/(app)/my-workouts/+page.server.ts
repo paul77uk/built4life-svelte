@@ -8,6 +8,7 @@ import {
 
 import { and, asc, eq, lt } from 'drizzle-orm'
 
+
 export const load = async ({ url, request }) => {
 	const query = url.searchParams.get('query') || ''
 
@@ -50,7 +51,7 @@ export const actions = {
 					),
 				)
 		} catch (error) {
-			return { error }
+			return { error: `${error }Failed to update PR` }
 		}
 	},
 }

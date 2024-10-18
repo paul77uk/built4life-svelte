@@ -13,6 +13,7 @@
 	let { data } = $props()
 	const form = superForm(data.form, {
 		validators: zodClient(registerSchema),
+		
 	})
 
 	// enhance is a function that takes a form object and returns an enhanced form object

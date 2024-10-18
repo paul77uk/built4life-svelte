@@ -1,21 +1,19 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card'
-	import { MinusCircle, PlusCircle } from 'lucide-svelte'
+	import { Minus, Plus } from 'lucide-svelte'
 	import { Button } from './ui/button'
 	import { Input } from './ui/input'
+	import type { Workout } from '$lib/types'
 
-	interface Props {
-		id: string
-		title: string
-		description: string | null
-		exercises: string[] | null
-		pr: number | null
-		minutes: number | null
-		seconds: number | null
-	}
-
-	let { id, title, description, exercises, pr, minutes, seconds }: Props =
-		$props()
+	let {
+		id,
+		title,
+		description,
+		exercises,
+		pr,
+		minutes,
+		seconds,
+	}: Omit<Workout, 'createdAt'> = $props()
 
 	let prAttempt = $state(0)
 </script>
@@ -40,26 +38,28 @@
 				>
 					PR: {pr}
 				</div>
-				<div class="flex justify-center">
+				<div class="flex justify-center gap-1">
 					<Button
+						class="w-8 p-0"
 						onclick={() => {
 							if (prAttempt > 0) prAttempt -= 1
-						}}><MinusCircle /></Button
+						}}><Minus size={18} /></Button
 					>
 					<form>
 						<Input
 							class="w-12 text-center"
 							bind:value={prAttempt}
 							type={'number'}
-              min={0}
+							min={0}
 						/>
 					</form>
 
 					<Button
+						class="w-8 p-0"
 						onclick={() => {
 							prAttempt += 1
 							console.log(typeof prAttempt)
-						}}><PlusCircle /></Button
+						}}><Plus size={18} /></Button
 					>
 				</div>
 			</div>
