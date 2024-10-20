@@ -405,6 +405,13 @@ class WorkoutsInMemoryRepo implements WorkoutsRepo {
 			minutes: 5,
 			seconds: 0,
 		},
+		// index 50
+		{
+			title: 'AMRAP Right Arm Clean & Press',
+			description: 'AMRAP in 1 set',
+			exercises: ['Curls (65lb/ 30kg)'],
+			pr: 0,
+		},
 	]
 
 	async getAll(): Promise<Workout[]> {

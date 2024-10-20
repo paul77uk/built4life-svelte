@@ -8,7 +8,7 @@ import {
 } from '@kinde-oss/kinde-auth-sveltekit'
 import { redirect } from '@sveltejs/kit'
 import { eq, and } from 'drizzle-orm'
-import { superValidate } from 'sveltekit-superforms'
+import { fail, setError, superValidate } from 'sveltekit-superforms'
 import { zod } from 'sveltekit-superforms/adapters'
 import { formSchema } from './schema'
 
@@ -23,7 +23,13 @@ export const load = async ({ url }) => {
 
 export const actions = {
 	default: async ({ request }) => {
-		const data = await request.formData()
+		const form = await superValidate(request, zod(formSchema))
+
+		if (!form.valid) {
+			return fail(400, { form })
+		}
+
+		const { title, description, exercises, pr, minutes, seconds } = form.data
 
 		const isAuthenticated = await kindeAuthClient.isAuthenticated(
 			request as unknown as SessionManager,
@@ -48,28 +54,28 @@ export const actions = {
 				.from(workoutTable)
 				.where(
 					and(
-						eq(workoutTable.title, (data.get('title') as string) || ''),
+						eq(workoutTable.title, (title as string) || ''),
 						eq(workoutTable.userId, user.id),
 					),
 				)
 				.limit(1)
 
-			try {
-				if (existingWorkout.length > 0) {
-					return { error: 'Workout with the same title already exists' }
-				}
+			if (existingWorkout.length > 0) {
+				return setError(form, 'title', 'Workout with this title already exists')
+			}
 
+			try {
 				await db.insert(workoutTable).values({
-					title: data.get('title'),
-					description: data.get('description'),
-					exercises: data.getAll('exercises'),
-					pr: data.get('pr') || 0,
-					minutes: data.get('minutes') || 0,
-					seconds: data.get('seconds') || 0,
+					title,
+					description,
+					exercises,
+					pr,
+					minutes,
+					seconds,
 					userId: user.id,
 				} as WorkoutInsert)
 			} catch (error) {
-				return { error: `${error} Failed to create workout` }
+				console.log(`${error} Failed to create workout`)
 			}
 
 			redirect(302, '/my-workouts')
