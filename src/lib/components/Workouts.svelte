@@ -1,9 +1,7 @@
 <script lang="ts">
 	import type { Workout } from '$lib/server/repos/workouts/WorkoutsRepoInterface'
-	import { superForm } from 'sveltekit-superforms'
+
 	import WorkoutCard from './WorkoutCard.svelte'
-	import { zodClient } from 'sveltekit-superforms/adapters'
-	import { formSchema } from '../../routes/(app)/schema'
 
 	type Props = {
 		workouts: Workout[]
@@ -11,7 +9,6 @@
 	}
 
 	let { workouts, form }: Props = $props()
-	
 </script>
 
 <div class="m-3">
@@ -21,5 +18,3 @@
 		{/each}
 	</div>
 </div>
-
-

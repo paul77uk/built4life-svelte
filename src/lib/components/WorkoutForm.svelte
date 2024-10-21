@@ -16,7 +16,8 @@
 
 	let { workout, data }: Props = $props()
 
-	const { form, enhance, delayed } = superForm(data.form, {
+	const { form, enhance, delayed, formId } = superForm(data.form, {
+		id: workout.title,
 		validators: zodClient(formSchema),
 		dataType: 'json',
 		onSubmit: () => {

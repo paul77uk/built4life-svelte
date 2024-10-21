@@ -9,8 +9,8 @@ import {
 import { and, asc, eq, lt } from 'drizzle-orm'
 
 
-export const load = async ({ url, request }) => {
-	const query = url.searchParams.get('query') || ''
+export const load = async ({  request }) => {
+	// const query = url.searchParams.get('query') || ''
 
 	const isAuthenticated = await kindeAuthClient.isAuthenticated(
 		request as unknown as SessionManager,
@@ -25,12 +25,12 @@ export const load = async ({ url, request }) => {
 			orderBy: [asc(workoutTable.createdAt)],
 		})
 
-		const filteredWorkouts = query
-			? workouts.filter(({ title }) =>
-					title.toLowerCase().includes(query.toLowerCase()),
-				)
-			: workouts
-		return { filteredWorkouts }
+		// const filteredWorkouts = query
+		// 	? workouts.filter(({ title }) =>
+		// 			title.toLowerCase().includes(query.toLowerCase()),
+		// 		)
+		// 	: workouts
+		return { workouts }
 	}
 }
 

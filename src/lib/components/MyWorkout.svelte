@@ -3,17 +3,19 @@
 	import { Minus, Plus } from 'lucide-svelte'
 	import { Button } from './ui/button'
 	import { Input } from './ui/input'
-	import type { Workout } from '$lib/types'
 
-	let {
-		id,
-		title,
-		description,
-		exercises,
-		pr,
-		minutes,
-		seconds,
-	}: Omit<Workout, 'createdAt'> = $props()
+	type Workout = {
+		id?: string
+		title: string
+		description?: string
+		exercises?: string[]
+		pr?: number
+		minutes?: number
+		seconds?: number
+	}
+
+	let { id, title, description, exercises, pr, minutes, seconds }: Workout =
+		$props()
 
 	let prAttempt = $state(0)
 </script>

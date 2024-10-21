@@ -1,40 +1,21 @@
 <script lang="ts">
 	import SearchForm from '$lib/components/SearchForm.svelte'
-	import Workouts from '$lib/components/Workouts.svelte'
-	import type { Workout } from '$lib/server/repos/workouts/WorkoutsRepoInterface.js'
+
 	import * as Card from '$lib/components/ui/card/index.js'
 
-	import { superForm } from 'sveltekit-superforms'
-	import * as Form from '$lib/components/ui/form'
-	import { Button } from '$lib/components/ui/button/index.js'
-	import { zodClient } from 'sveltekit-superforms/adapters'
-	import { formSchema } from '../../routes/(app)/schema'
-	import { Input } from '$lib/components/ui/input/index.js'
-	import { Loader } from 'lucide-svelte'
-	import { toast } from 'svelte-sonner'
 	import WorkoutForm from '$lib/components/WorkoutForm.svelte'
+	import { workoutsState } from '$lib/state.svelte.js'
 
 	let { data } = $props()
-	let workouts: Workout[] = data.workouts
-
-	// const form = superForm(data.form, {
-	// 	validators: zodClient(formSchema),
-	// 	dataType: 'json',
-
-	// 	// onUpdated: (form) => {
-	// 	// 	toast.success(`Workout added to your workouts`)
-	// 	// },
-	// })
-
-	// const { form: formData, enhance, delayed, errors } = form
+	// let workoutData = data.workouts
+	workoutsState.filteredWorkouts = data.workouts
 </script>
 
-<SearchForm />
-<!-- <Workouts {...data} /> -->
+<SearchForm workouts={data.workouts} />
 
 <div class="m-3">
 	<div class="flex flex-wrap justify-center">
-		{#each workouts as workout}
+		{#each workoutsState.filteredWorkouts as workout}
 			<Card.Root class="m-3 flex w-[300px] flex-col px-5">
 				<Card.Header>
 					<Card.Title class="mx-auto text-center">{workout.title}</Card.Title>
