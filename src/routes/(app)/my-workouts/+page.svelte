@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { goto } from '$app/navigation'
+	import { page } from '$app/stores'
 	import MyWorkout from '$lib/components/MyWorkout.svelte'
 	import SearchForm from '$lib/components/SearchForm.svelte'
 	import { workoutsState } from '$lib/state.svelte.js'
+	import { toast } from 'svelte-sonner'
 
 	type Workout = {
 		id?: string
@@ -17,6 +20,12 @@
 
 	let workouts = data.workouts as Workout[]
 	workoutsState.filteredWorkouts = data.workouts as Workout[]
+
+	if ($page.url.searchParams.get('redirected') === '1') {
+		toast.success('New workout added successfully')
+		$page.url.searchParams.delete('redirected')
+		history.replaceState({}, '', $page.url.toString())
+	}
 </script>
 
 <SearchForm {workouts} />

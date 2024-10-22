@@ -54,7 +54,7 @@ export const actions = {
 				.from(workoutTable)
 				.where(
 					and(
-						eq(workoutTable.title, (title as string) || ''),
+						eq(workoutTable.title, title as string),
 						eq(workoutTable.userId, user.id),
 					),
 				)
@@ -78,7 +78,7 @@ export const actions = {
 				console.log(`${error} Failed to create workout`)
 			}
 
-			redirect(302, '/my-workouts')
+			redirect(302, '/my-workouts?redirected=1')
 		}
 	},
 }

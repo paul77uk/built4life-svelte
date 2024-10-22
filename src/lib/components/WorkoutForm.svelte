@@ -22,11 +22,11 @@
 		dataType: 'json',
 		onSubmit: () => {
 			$form.title = workout.title
-			$form.description = workout.description
-			$form.exercises = workout.exercises
-			$form.pr = workout.pr
-			$form.minutes = workout.minutes
-			$form.seconds = workout.seconds
+			if (workout.description) $form.description = workout.description
+      if (workout.exercises) $form.exercises = workout.exercises
+      if (workout.pr) $form.pr = workout.pr
+      if (workout.minutes) $form.minutes = workout.minutes
+      if (workout.seconds) $form.seconds = workout.seconds
 		},
 
 		onUpdated: ({ form }) => {

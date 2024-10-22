@@ -5,13 +5,14 @@
 
 	import WorkoutForm from '$lib/components/WorkoutForm.svelte'
 	import { workoutsState } from '$lib/state.svelte.js'
+	import { workouts } from '$lib/workoutData.js'
 
 	let { data } = $props()
 	// let workoutData = data.workouts
-	workoutsState.filteredWorkouts = data.workouts
+	workoutsState.filteredWorkouts = workouts
 </script>
 
-<SearchForm workouts={data.workouts} />
+<SearchForm {workouts} />
 
 <div class="m-3">
 	<div class="flex flex-wrap justify-center">
